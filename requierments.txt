@@ -36,3 +36,5 @@ Evaluacion
     Parcial 3: 40
     Total=100
 
+
+Autor: Manuel Sanchez
