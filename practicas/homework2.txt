@@ -1,2 +1,14 @@
 1. Wireframes/ mockups of my project for 1 min 4 sections-for 2 min 8
 2. Get 3 boostrap VSC plugins/ get 3 python VSC plugins
+
+Boostrap:
+
+1-HTML CSS Support -provides intellisense in your HTML files based on the CSS that is included in your project or referenced remotely.
+2-Autoprefixer -Autoprefixer will automatically add vendor prefixes to make sure your app looks as good as possible in different browsers.
+3-Bootstrap 4, Font awesome 4, Font Awesome 5 Free & Pro snippets-That’s why I figured it was worth sharing this extension which provides intellisense for Bootstrap 4, Font Awesome 4, and Font Awesome 5.
+
+Python:
+
+1-Python Docstring Generator
+2-Trailing Spaces
+3-Gitlens
