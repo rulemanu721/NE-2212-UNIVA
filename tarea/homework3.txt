@@ -1,0 +1,3 @@
+1. Todos los mockups
+
+2. Entregar las pantallas del FE con boostrap
