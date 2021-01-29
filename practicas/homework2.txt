@@ -5,7 +5,7 @@ Boostrap:
 
 1-HTML CSS Support -provides intellisense in your HTML files based on the CSS that is included in your project or referenced remotely.
 2-Autoprefixer -Autoprefixer will automatically add vendor prefixes to make sure your app looks as good as possible in different browsers.
-3-Bootstrap 4, Font awesome 4, Font Awesome 5 Free & Pro snippets-That’s why I figured it was worth sharing this extension which provides intellisense for Bootstrap 4, Font Awesome 4, and Font Awesome 5.
+3-Bootstrap 4, Font awesome 4, Font Awesome 5 Free & Pro snippets-
 
 Python:
 
