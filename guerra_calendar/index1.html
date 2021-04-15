@@ -1,0 +1,21 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> {% extends "layout.html" %} {% block body %}
+
+
+<form action="/checkUser" method="post">
+    <h2 class="text-center text-white pt-5 ">Iniciar sesión</h2>
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+
+                    <p class="text-info">Nombre de usuario: <br>
+                        <input maxlength="35" class="form-control" type="text" name="user" placeholder="username"></p>
+                    <p class="text-info" class="Password">Password: <br>
+                        <input maxlength="35" class="form-control" type="password" name="password" placeholder="password"></p>
+                    <p class="center"><input class="btn btn-info btn-md" type="submit" value="Iniciar Sesión"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

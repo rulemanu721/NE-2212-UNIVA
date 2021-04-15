@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Flask Web Scheduler</title>
+
+  <style>
+  .event_selected {
+    background-color: red;
+  }
+  </style>
+
+
+  <script>
+  $(document).ready(function() {
+    $("#calendar").fullCalendar({
+      events : '{{url_for('scheduler')}}',
+      dayClick : function(date){
+
+
+
+          $('#start, #end').datepicker('setDate',date.format());
+          $('.event_selected').removeClass('event_selected');
+          $(this).addClass('event_selected');
+
+      },
+      eventClick : function(event){
+        $('#id').val(event.id);
+        $('#title').val(event.title);
+        $('#start').val(event.start.toISOString());
+        $('#end').val(event.end == null ? event.start.toISOString() : event.end.toISOString() );
+        $('.event_selected').removeClass('event_selected');
+        $(this).addClass('event_selected');
+     }
+   });
+
+    $('#start, #end').datepicker({
+      dateFormat: "yy-mm-dd",
+      onSelect : function(dateText, inst){
+        if(this.id == 'start'){
+          $('#start').datepicker("getDate").getTime() > $('#end').datepicker("getDate").getTime();
+          $('#end').datepicker("setDate", dateText);
+        }
+      }
+    });
+
+    $('#start, #end').datepicker('setDate',new Date());
+
+    $('#insertBtn').click(function(){
+      $.ajax({
+        url : '{{url_for('scheduler')}}',
+        type : 'post',
+        data :$('#schedulerForm').serialize(),
+        success : function(res){
+          let data = JSON.parse(res);
+          if(data.rows > 0){
+
+            $("#calendar").fullCalendar( 'refetchEvents' )
+            alert('Dado de alta correctamente');
+          }
+          else{
+            alert('error');
+          }
+        }
+      });
+    });
+
+    $('#updateBtn').click(function(){
+      $.ajax({
+        url : '{{url_for('scheduler')}}',
+        type : 'put',
+        data :$('#schedulerForm').serialize(),
+        success : function(res){
+          let data = JSON.parse(res);
+          if(data.rows > 0){
+            $("#calendar").fullCalendar( 'refetchEvents' )
+            alert('Editado correctamente');
+          }
+          else{
+            alert('error');
+          }
+        }
+      });
+    });
+
+    $('#deleteBtn').click(function(){
+      if(confirm($('#title').val() + " se eliminará. ¿Quieres borrar el horario?")){
+        $.ajax({
+          url : '{{url_for('scheduler')}}',
+          type : 'delete',
+          data :{id:$('#id').val()},
+          success : function(res){
+            let data = JSON.parse(res);
+            if(data.rows > 0){
+              $("#calendar").fullCalendar( 'refetchEvents' )
+            }
+            else{
+              alert('error');
+            }
+          }
+        });
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+
+{% block body %} {% endblock%}
+
+</body>
+</html>

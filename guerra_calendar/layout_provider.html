@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Flask Web Scheduler</title>
+
+
+
+  <script>
+  $(document).ready(function() {
+
+
+    $('#insertBtn').click(function(){
+      $.ajax({
+        url : '{{url_for('scheduler')}}',
+        type : 'post',
+        data :$('#schedulerForm').serialize(),
+        success : function(res){
+          let data = JSON.parse(res);
+          if(data.rows > 0){
+
+            $("#calendar").fullCalendar( 'refetchEvents' )
+            alert('Dado de alta correctamente');
+            location.reload();
+          }
+          else{
+            alert('error');
+          }
+        }
+      });
+    });
+
+
+
+
+  });
+  </script>
+</head>
+<body>
+
+{% block body %} {% endblock%}
+
+</body>
+</html>
